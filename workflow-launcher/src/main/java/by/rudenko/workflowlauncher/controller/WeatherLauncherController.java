@@ -34,7 +34,7 @@ public class WeatherLauncherController {
 
     @GetMapping("/launch")
     public ResponseEntity<WeatherDTO> startWorkflow(@RequestParam String city) {
-        var workflow = workflowClient.newWorkflowStub(
+       WeatherWorkflowWorker workflow = workflowClient.newWorkflowStub(
                 WeatherWorkflowWorker.class,
                 new WorkflowOptions.Builder()
                         .setExecutionStartToCloseTimeout(Duration.ofSeconds(2))
